@@ -1,0 +1,40 @@
+//https://codeforces.com/gym/106063/problem/A
+#include <bits/stdc++.h>
+using namespace std;
+
+
+int main()
+{
+    int n;
+    cin >> n;
+    
+    int soma = 0;
+    
+    for (int i = 0; i < n; i++){
+        
+        int a;
+        cin >> a;
+        
+        soma += a;
+        
+    }
+        
+    if (soma % n == 0){
+        
+        cout << "0" << '\n';
+    }
+    else{
+        
+        int resul = 0;
+        
+        while(soma % n != 0){
+            
+            n -= 1;
+            resul += 1;
+        }
+        
+        cout << resul << '\n';
+    }
+
+    return 0;
+}
