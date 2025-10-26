@@ -1,0 +1,107 @@
+//https://codeforces.com/problemset/problem/1993/A
+#include <bits/stdc++.h>
+using namespace std;
+
+
+int main()
+{
+    int t;
+    cin >> t;
+    
+    for (int i = 0; i < t; i++){
+        
+        int n;
+        cin >> n;
+        
+        string s;
+        cin >> s;
+        
+        unordered_map<char, int> dict;
+        
+        for (int j = 0; j < 4*n; j++){
+            
+            if (dict.contains(s[j]) == false){
+                
+                dict.insert({s[j], 1});
+                
+            }
+            
+            else{
+                
+                dict[s[j]] = dict[s[j]] + 1;
+                
+            }
+            
+        }
+        
+        int corretos = 0;
+        
+        if (dict.contains('A')){ 
+            
+            if (dict['A'] < n){
+            
+                corretos += dict['A'];
+            
+                
+            }
+            
+            else{
+                
+                corretos += n;
+                
+            }
+        }
+        
+        if (dict.contains('B')){ 
+            
+            if (dict['B'] < n){
+            
+                corretos += dict['B'];
+            
+                
+            }
+            
+            else{
+                
+                corretos += n;
+                
+            }
+        }
+        
+        if (dict.contains('C')){ 
+            
+            if (dict['C'] < n){
+            
+                corretos += dict['C'];
+            
+                
+            }
+            
+            else{
+                
+                corretos += n;
+                
+            }
+        }
+        
+        if (dict.contains('D')){ 
+            
+            if (dict['D'] < n){
+            
+                corretos += dict['D'];
+            
+                
+            }
+            
+            else{
+                
+                corretos += n;
+                
+            }
+        }
+        
+        cout << corretos << '\n';
+    }
+    
+    return 0;
+}
