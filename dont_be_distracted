@@ -1,0 +1,54 @@
+//https://codeforces.com/problemset/problem/1520/A?mobile=true
+#include <bits/stdc++.h>
+using namespace std;
+
+
+int main()
+{
+    int t;
+    cin >> t;
+    
+    for (int i = 0; i < t; i++){
+        
+        int n;
+        cin >> n;
+        
+        string s;
+        cin >> s;
+        
+        set <char> v;
+        bool padrao = true;
+        
+        for(int j = 0; j < n; j++){
+            
+            if (v.contains(s[j])){
+                
+                padrao = false;
+                
+            }
+            
+            if (j != n){
+                if (s[j] != s[j+1]){
+                    
+                    v.insert(s[j]);
+                    
+                }
+            }
+            
+        }
+        
+        if (padrao){
+            
+            cout << "YES" << "\n";
+            
+        }
+        else{
+            
+            
+            cout << "NO" << "\n";
+            
+        }
+    }
+
+    return 0;
+}
