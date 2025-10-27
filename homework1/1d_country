@@ -1,0 +1,105 @@
+//link
+//incompleto, só funciona com entradas positivas, consertar!!!!
+
+#include <bits/stdc++.h>
+#define ll long long int
+using namespace std;
+
+int main(){
+    
+    ios_base::sync_with_stdio(false);
+    cin.tie(0);
+    std::vector<int> ends;
+    std::vector<int> ppl;
+    
+    
+    int n; cin >> n;
+    
+    
+    
+    for (int i = 0; i < n; i++){
+        
+        int x; cin >> x; 
+        ends.push_back(x);
+        
+    }
+    
+    for (int i = 0; i < n; i++){
+        
+        int p; cin >> p; 
+        ppl.push_back(p);
+        
+    }
+    
+    int tam = ends[n-1];
+    vector<ll> pref(tam + 1, 0);
+    ll soma = 0;
+    int loc = 0;
+    
+    for (int i = 0; i < n; i++){
+        
+        for (int j = loc + 1; j < ends[i]; j++){
+            
+            pref[j] = soma;
+            
+        }
+        
+        
+        int pp = ppl[i];
+        loc = ends[i];
+        
+        
+        
+        soma = soma + pp;
+        pref[loc] = soma;
+        
+    }
+    
+    int q; cin >> q; while(q--){
+        
+        int l, r;
+        cin >> l >> r;
+        ll res;
+        
+        if (r == l and pref[l-1] != pref[l] and (r < tam)){
+            
+            res = pref[r];
+            
+        }
+        
+        else if (r == l and pref[l-1] == pref[l] and (r < tam)){
+            
+            res = 0;
+            
+        }
+        
+        else if (r != l and (r < tam)){
+        
+            res = pref[r] - pref[l];
+            
+        }
+        
+        else if (r >= tam){
+            
+            r = tam;
+            
+            if (l >= tam){
+                
+                res = 0;
+                
+            }
+            
+            else{
+                
+                res = pref[r] - pref[l];
+                
+            }
+            
+        }
+        
+        cout << res << '\n';
+    }
+    
+
+    return 0;
+}
