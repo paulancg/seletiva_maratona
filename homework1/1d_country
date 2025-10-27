@@ -84,10 +84,10 @@ int main(){
         r = r - primeiro;
         ll res;
         
-        if (l < primeiro){
+        if (l < 0){
             
             
-            if (r < primeiro){
+            if (r < 0){
             
                 res = 0;
                 
@@ -95,14 +95,14 @@ int main(){
             }
             
             
-            else if (r >= primeiro and r <= tam){
+            else if (r >= 0 and r <= tam){
                 
                 res = pref[r];
                 
                 
             }
             
-            else if (r >= primeiro and r > tam){
+            else if (r >= 0 and r > tam){
                 
                 res = pref[tam - 1];
                 
@@ -112,7 +112,7 @@ int main(){
         }
         
         
-        else if (r == l and pref[l-1] != pref[l] and (r <= tam)){
+        else if (r == l and (l == 0 or pref[l-1] != pref[l]) and (r <= tam)){
             
             res = pref[r];
             
