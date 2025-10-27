@@ -1,5 +1,5 @@
 //link
-//incompleto, só funciona com entradas positivas, consertar!!!!
+//incompleto, só funciona com entradas positivas e ineficiente, consertar!!!!
 
 #include <bits/stdc++.h>
 #define ll long long int
@@ -9,6 +9,7 @@ int main(){
     
     ios_base::sync_with_stdio(false);
     cin.tie(0);
+    
     std::vector<int> ends;
     std::vector<int> ppl;
     
@@ -31,8 +32,28 @@ int main(){
         
     }
     
-    int tam = ends[n-1];
-    vector<ll> pref(tam + 1, 0);
+    int primeiro = ends[0];
+    int tam;
+    
+    if (primeiro >= 0){
+        
+        tam = ends[n-1];
+    }
+    
+    else if (primeiro < 0 and ends [n-1] >= 0){
+        
+        tam = ends[n-1] - primeiro;
+        
+    }
+    
+    else if (primeiro < 0 and ends [n-1] >= 0){
+        
+        tam = 0 - primeiro;
+        
+    }
+    
+    
+    vector<ll> pref(tam, 0);
     ll soma = 0;
     int loc = 0;
     
@@ -46,7 +67,7 @@ int main(){
         
         
         int pp = ppl[i];
-        loc = ends[i];
+        loc = ends[i] - primeiro;
         
         
         
@@ -59,31 +80,61 @@ int main(){
         
         int l, r;
         cin >> l >> r;
+        l = l - primeiro;
+        r = r - primeiro;
         ll res;
         
-        if (r == l and pref[l-1] != pref[l] and (r < tam)){
+        if (l < primeiro){
+            
+            
+            if (r < primeiro){
+            
+                res = 0;
+                
+                
+            }
+            
+            
+            else if (r >= primeiro and r <= tam){
+                
+                res = pref[r];
+                
+                
+            }
+            
+            else if (r >= primeiro and r > tam){
+                
+                res = pref[tam - 1];
+                
+            }
+            
+            
+        }
+        
+        
+        else if (r == l and pref[l-1] != pref[l] and (r <= tam)){
             
             res = pref[r];
             
         }
         
-        else if (r == l and pref[l-1] == pref[l] and (r < tam)){
+        else if (r == l and pref[l-1] == pref[l] and (r <= tam)){
             
             res = 0;
             
         }
         
-        else if (r != l and (r < tam)){
+        else if (r != l and (r <= tam)){
         
             res = pref[r] - pref[l];
             
         }
         
-        else if (r >= tam){
+        else if (r > tam){
             
             r = tam;
             
-            if (l >= tam){
+            if (l > tam){
                 
                 res = 0;
                 
@@ -96,6 +147,9 @@ int main(){
             }
             
         }
+        
+        
+        
         
         cout << res << '\n';
     }
