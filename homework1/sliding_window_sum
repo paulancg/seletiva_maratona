@@ -1,5 +1,5 @@
 //link
-// w.a. ;-;
+//agr vai
 
 #include <bits/stdc++.h>
 #define ll long long int
@@ -76,19 +76,19 @@ int main(){
     }
     
     int tam = sums.size();
-    bitset<30> b0 {0};
+    ll xors = 0;
     
     
     for (int i = 0; i < tam; i++){
         
         
-        b0 = bitset<30> {sums[i]} ^= b0;
+        xors ^= sums[i];
         
         
         
     }
     
-    cout << b0.to_ullong() << '\n';
+    cout << xors << '\n';
     
 
     return 0;
