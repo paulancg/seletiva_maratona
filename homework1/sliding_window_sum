@@ -1,0 +1,95 @@
+//link
+// w.a. ;-;
+
+#include <bits/stdc++.h>
+#define ll long long int
+using namespace std;
+
+int main(){
+    
+    ios_base::sync_with_stdio(false);
+    cin.tie(0);
+    
+    int n; cin >> n;
+    int k; cin >> k;
+    
+    ll x, a, b, c;
+    cin >> x >> a >> b >> c;
+    
+    vector<ll> vec;
+    
+    
+    for (int i = 0; i < n; i++){
+        
+        if (i == 0){
+            
+            vec.push_back(x);
+            
+        }
+        else{
+            
+            ll prox = (a * vec[i-1] + b) % c;
+            vec.push_back(prox);
+            
+        }
+        
+    }
+    
+    vector<ll> pref;
+    
+    for (int i = 0; i < n; i++){
+        
+        if (i == 0){
+            
+            pref.push_back(x);
+            
+        }
+        else{
+            
+            ll prox = vec[i] + pref[i-1];
+            pref.push_back(prox);
+            
+        }
+        
+    }
+    
+    vector<ll> sums;
+    ll l = - 1;
+    ll r = k - 1;
+    
+    
+    while(r < n){
+        
+        if (l == -1){
+            
+            sums.push_back(pref[r]);
+        }
+        
+        else{
+            
+            sums.push_back(pref[r] - pref[l]);
+            
+        }
+        
+        l++;
+        r++;
+    }
+    
+    int tam = sums.size();
+    bitset<30> b0 {0};
+    
+    
+    for (int i = 0; i < tam; i++){
+        
+        
+        b0 = bitset<30> {sums[i]} ^= b0;
+        
+        
+        
+    }
+    
+    cout << b0.to_ullong() << '\n';
+    
+
+    return 0;
+}
