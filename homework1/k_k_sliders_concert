@@ -1,0 +1,60 @@
+//link
+//"But We Don't Do Things Because They Are Easy Hm? We Do Them Because They Are Profitable." -Tom nook.
+
+#include <bits/stdc++.h>
+#define ll long long int
+using namespace std;
+
+int main(){
+    
+    ios_base::sync_with_stdio(false);
+    cin.tie(0);
+    
+    int n, k; cin >> n >> k;
+
+    vector<int> direito;
+    vector<int> esquerdo;
+
+    int pares = 0;
+
+    for (int i = 0; i < n; i++){
+
+        int a; cin >> a;
+        direito.push_back(a);
+
+    }
+    
+    for (int i = 0; i < n; i++){
+
+        int b; cin >> b;
+        esquerdo.push_back(b);
+
+    }
+
+    sort(direito.begin(), direito.end()); //nlogn 10⁵
+    sort(esquerdo.begin(), esquerdo.end());
+
+    for (int i = 0; i < n; i++){
+
+        int valor = direito[i] + esquerdo[i];
+
+        if (valor <= k){
+
+            k -= valor;
+            pares++;
+
+        }
+        else{
+
+            break;
+
+        }
+        
+
+    }
+
+    cout << pares << '\n';
+
+
+    return 0;
+}
