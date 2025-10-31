@@ -1,0 +1,116 @@
+//link
+// eu tenho que a aprender a testar *ANTES* de submitar aaAAAA
+// O PROBLEMA É QUE EU TO CONTANDO ERRADO!! Test case errado encontrado: 5 1 2 3 4 5
+// não passou ainda, mas sei como consertar
+
+#include <bits/stdc++.h>
+#define ll long long int
+using namespace std;
+
+int main(){
+    
+    ios_base::sync_with_stdio(false);
+    cin.tie(0);
+    
+    std::vector<int> a;
+    int n; cin >> n;
+    
+    for (int i = 0; i < n; i++){
+        
+        int x; cin >> x;
+        
+        a.push_back(x);
+        
+    }
+    
+    stack<int> b;
+    vector<string> ops;
+    
+    
+    int num = 1;
+    
+    int i = n - 1;
+    
+    
+    while (i >= 0){
+        
+        if (b.size() == 0){
+            
+            if (a[i] == num){
+                
+                num++;
+                ops.push_back("A C");
+                a.pop_back();
+                i--;
+                
+                
+            }
+            
+            else{
+                
+                b.push(a[i]);
+                ops.push_back("A B");
+                a.pop_back();
+                i--;
+                
+            }
+            
+        }
+        
+        else{
+            
+            if (a[i] == num){
+                
+                num++;
+                ops.push_back("A C");
+                a.pop_back();
+                i--;
+                
+            }
+            
+            else if(b.top() == num){
+                
+                num++;
+                b.pop();
+                ops.push_back("B C");
+
+            }
+            
+            else{
+                
+                b.push(a[i]);
+                ops.push_back("A B");
+                a.pop_back();
+                i--;
+                
+                
+            }
+            
+        }
+        
+        
+    }
+    
+    if (num < n){
+        
+        cout << -1 << '\n';
+        
+    }
+    else{
+        
+        int q = ops.size();
+        
+        cout << q << '\n';
+        
+        for (int i = 0; i < q; i++){
+            
+            cout << ops[i] << '\n';
+            
+        }
+        
+    }
+    
+    
+
+    return 0;
+}
