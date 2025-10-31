@@ -1,7 +1,6 @@
 //link
 // eu tenho que a aprender a testar *ANTES* de submitar aaAAAA
-// O PROBLEMA É QUE EU TO CONTANDO ERRADO!! Test case errado encontrado: 5 1 2 3 4 5
-// não passou ainda, mas sei como consertar
+
 
 #include <bits/stdc++.h>
 #define ll long long int
@@ -91,7 +90,21 @@ int main(){
         
     }
     
-    if (num < n){
+    if (b.size() > 0){
+        
+        while (b.size() > 0 and b.top() == num){
+                
+                num++;
+                b.pop();
+                ops.push_back("B C");
+                
+            }
+        
+        
+    }
+    
+    
+    if (num <= n){
         
         cout << -1 << '\n';
         
