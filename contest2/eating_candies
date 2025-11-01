@@ -1,0 +1,43 @@
+//link
+//incompletissima n faz nem nada
+
+#include <bits/stdc++.h>
+#define ll long long int
+using namespace std;
+
+int main(){
+    
+    ios_base::sync_with_stdio(false);
+    cin.tie(0);
+
+    int t; cin >> t;
+    for (int i = 0; i < t; i++){
+        
+        vector<int> pref;
+        int n; cin >> n;
+        for (int j = 0; j < n; j++){
+            
+            int a; cin >> a;
+            
+            if (j == 0){
+                
+                pref.push_back(a);
+                
+            }
+            
+            else{
+                
+                pref.push_back(a + pref[j-1]);
+                
+            }
+            
+            
+        }
+        
+    }
+    
+    
+    
+
+    return 0;
+}
