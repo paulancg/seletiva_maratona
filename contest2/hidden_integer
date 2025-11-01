@@ -1,0 +1,85 @@
+//link
+
+#include <bits/stdc++.h>
+#define ll long long int
+using namespace std;
+
+int main(){
+    
+    ios_base::sync_with_stdio(false);
+    cin.tie(0);
+
+    int y = 1000000000/2;
+    int l = 0; //VE SE PRECISA MUDAR DPS
+    int r = 1000000000;
+    
+    cout << "? " << y << endl;
+    
+    string resp; cin >> resp;
+    
+    if (resp == "YES"){
+        
+        r = y;
+        y = y - ((y - l)/2);
+        
+    }
+    
+    else if (resp == "NO"){
+        
+        l = y;
+        y = y + ((r - y)/2);
+        
+    }
+    
+    bool achou = false;
+    
+    while (!achou){
+        
+        
+        cout << "? " << y << endl;
+    
+        string resp; cin >> resp;
+        
+        if (resp == "YES"){
+            
+            
+            if (y - l <= 1){
+                
+                achou = true;
+                cout << "! " << l << endl;
+                break;
+                
+            }
+            
+            
+            r = y;
+            y = y - ((y - l)/2);
+            
+        }
+        
+        else if (resp == "NO"){
+            
+            if (r - y == 1){
+                
+                achou = true;
+                cout << "! " << y << endl;
+                break;
+                
+            }
+            
+            l = y;
+            y = y + ((r - y)/2);
+            
+            
+        }
+        
+        
+        
+        
+        
+    }
+    
+    
+
+    return 0;
+}
