@@ -1,0 +1,143 @@
+//link
+
+#include <bits/stdc++.h>
+#define ll long long int
+using namespace std;
+
+int main(){
+    
+    ios_base::sync_with_stdio(false);
+    cin.tie(0);
+
+    
+    int t; cin >> t;
+    for (int i = 0; i < t; i++){
+        
+        bool correto = true;
+        
+        int n; cin >> n;
+       
+        int sudoku [n][n];
+        
+        int soma = ((n + 1) * n)/2;
+        
+        for (int j = 0; j < n; j++){
+            
+            for (int k = 0; k < n; k++){
+                
+                int a; cin >> a;
+                sudoku[j][k] = a;
+                
+                
+                
+            }
+            
+            
+        }
+        
+        for (int j = 0; j < n; j++){
+            
+            int soma_linha = 0;
+            
+            for (int k = 0; k < n; k++){
+                
+                
+                soma_linha += sudoku[j][k];
+                
+                
+                
+            }
+            
+            if (soma != soma_linha){
+                
+                
+                correto = false;
+                break;
+                
+                
+            }
+            
+        }
+        
+        if (correto){
+            
+            for (int j = 0; j < n; j++){
+            
+                int soma_coluna = 0;
+                
+                for (int k = 0; k < n; k++){
+                    
+                    
+                    soma_coluna += sudoku[k][j];
+                    
+                    
+                    
+                }
+                
+                if (soma != soma_coluna){
+                    
+                    
+                    correto = false;
+                    break;
+                    
+                    
+                }
+            
+            }
+            
+            
+            
+            
+            
+        }
+        
+        if (correto){
+            
+            
+            
+            for (int i = 0; i < n; i++){
+                
+                int soma_grid = 0;
+                
+                for (int j = 0; j < sqrt(n); j++){
+                    
+                    for (int k = 0; k < sqrt(n); k++){
+                    
+                        soma_grid += sudoku[j][k];
+                    
+                    
+                    }
+                    
+                    
+                }
+                
+                if (soma_grid != soma){
+                    
+                    correto = false;
+                    break;
+                    
+                }
+                
+            }
+            
+            
+            
+            
+        }
+        
+        
+        if (correto){
+            
+            cout << "yes" << '\n';
+            
+        }
+        else{
+            
+            cout << "no" << '\n';
+            
+        }
+
+    }
+
+    return 0;
+}
