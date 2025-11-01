@@ -1,0 +1,73 @@
+//link
+
+#include <bits/stdc++.h>
+#define ll long long int
+using namespace std;
+
+int main(){
+    
+    ios_base::sync_with_stdio(false);
+    cin.tie(0);
+
+    
+    int n; cin >> n;
+    vector <int> wind;
+    vector <int> tiros;
+    int qnt = 0;
+    
+    
+    for (int i = 0; i < n; i++){
+        
+        wind.push_back(i+1);
+        
+        
+    }
+    
+    for (int i = 0; i < n; i++){
+        
+        int tam = wind.size();
+        int alvo;
+        if (i <= tam - 1){
+            alvo = i;
+        }
+        else{
+            
+            alvo = tam-1;
+            
+        }
+        
+        if (tam > 0 and alvo < tam - 1){
+            
+            tiros.push_back(tam - 1);
+            wind.pop_back();
+            qnt++;
+            
+        }
+        else if (tam > 0 and alvo == tam - 1){
+            
+            tiros.push_back(tam - 1);
+            wind.pop_back();
+            qnt++;
+            break;
+            
+        }
+        else if(tam == 0){
+            
+            break;
+            
+        }
+        
+    }
+    
+    cout << qnt << '\n';
+    
+    for (int i = 0; i < qnt; i++){
+        
+        cout << tiros[i] + 1 << '\n';
+        
+        
+    }
+
+
+    return 0;
+}
