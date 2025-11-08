@@ -24,6 +24,17 @@ int main(){
         int r; cin >> r;
         direitas.push_back(r);
     }
+    
+    bool acabou = false;
+    
+    if(m == 1){
+        
+        acabou = true;
+        cout << direitas[0] - esquerdas[0] + 1 << '\n'; //espera-se q seja + 1 msm
+        
+        
+        
+    }
 
     vector<int> inter;
     
@@ -96,15 +107,9 @@ int main(){
     
     int tam = inter.size();
     
-    if (tam > 0){
+    if (!acabou){
         
         cout << tam << '\n';
-        
-    }
-    else{ //isso vai precisar ser mudado pq depende
-        
-        
-        cout << n << '\n';
         
     }
     
