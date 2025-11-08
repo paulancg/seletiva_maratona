@@ -4,6 +4,18 @@
 #define ll long long int
 using namespace std;
 
+
+
+string str_tolower(string s)
+{
+    transform(s.begin(), s.end(), s.begin(),
+                
+                   [](unsigned char c){ return tolower(c); }
+                  );
+    return s;
+}
+
+
 int main(){
     
     ios_base::sync_with_stdio(false);
@@ -22,7 +34,7 @@ int main(){
             i_eszett = i;
             qnt_eszett++;
             
-            if(i + 2 < tam - 1 and s[i+2] == 'S'){
+            if(i + 2 <= tam - 1 and s[i+2] == 'S'){
                 
                 qnt_eszett++;
                 i += 3;
@@ -40,14 +52,10 @@ int main(){
         }
     }
     
-    for (int i = 0; i < tam; i++){
-
-        //cout << tolower(s[i]);
-        //cout << s[i] +32;
-        
-    }
+    s = str_tolower(s);
+    cout << s << '\n';
     
-    cout << '\n';
+    
     
     
     if(i_eszett != -1){
@@ -71,6 +79,51 @@ int main(){
             }
             
             cout << '\n';
+            
+        }
+        
+        else if(qnt_eszett == 2){
+            
+            
+            for(int i = 0; i < i_eszett; i++){
+                
+                cout << s[i];
+                
+                
+            }
+            
+             cout << 'B';
+            
+            for(int i = i_eszett + 2; i < tam; i++){
+                
+                cout << s[i];
+                
+                
+            }
+            
+            cout << '\n';
+            
+            
+            //caso 2
+            
+            for(int i = 0; i <= i_eszett; i++){
+                
+                cout << s[i];
+                
+                
+            }
+            
+             cout << 'B';
+            
+            for(int i = i_eszett + 3; i < tam; i++){
+                
+                cout << s[i];
+                
+                
+            }
+            
+            cout << '\n';
+            
             
         }
         
