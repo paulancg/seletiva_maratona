@@ -1,13 +1,13 @@
-//não tá funcionando, provavelmente por causa daquela história pra passar array como argumento de função
-//lembrar de consertar o v antes de submitar!!!
+//ta errado ainda, mas pelo menos agr a função ta lendo os array <3 (eu acho)
 
 #include <bits/stdc++.h>
 #define ll long long int
 using namespace std;
 
+    
 
     //bicoloridade
-    bool dfs(int v, vector<int> adj[], bool vis[], bool cor[]){
+    bool dfs(int v, vector<vector<int>> &adj, bool (&vis)[], bool (&cor)[]){
 
         vis[v] = true;
         for (int u: adj[v]){
@@ -25,8 +25,7 @@ using namespace std;
                     return false;
 
                 }
-
-
+                
 
             }
 
@@ -48,7 +47,7 @@ int main(){
     
     int n; cin >> n;
     int m; cin >> m;
-    vector<int> grafo [n];
+    vector<vector<int>> grafo(n);
     bool vis[n];
     bool cor[n];
 
@@ -57,7 +56,8 @@ int main(){
         int a; cin >> a;
         int b; cin >> b;
 
-        grafo[a].push_back(b);
+        grafo[a-1].push_back(b-1);
+        grafo[b-1].push_back(a-1);
 
 
     }
@@ -66,7 +66,7 @@ int main(){
 
         for(bool b:cor){
 
-            if(b){
+            if(b == true){
                 cout << 1 << " ";
             }
             else{
